@@ -8,6 +8,7 @@ const { findInitials } = utils;  //destructuring
 // can also do this while requiring
 
 const { readFile } = require('fs'); //gives access to readFile
+const chalk = require('chalk'); //knows that it is an npm module
 
 readFile('./stuff.txt', 'utf8', (err, data) => {
   if(err) console.log('ERROR', err);
@@ -30,6 +31,8 @@ readFile('./stuff.txt', 'utf8', (err, data) => {
 readFile('./words.txt', 'utf8', (err, data) => {
   if(err) console.log('ERROR', err);
   else {
-    console.log(data);
+    console.log(data);//.split('\n'));
+    let arr = data.split('\n').map(findInitials);
+    console.log(chalk.bgBlue(arr));
   }
 });
